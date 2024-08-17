@@ -7,6 +7,13 @@ int Player::getTotal() const {
   for (auto card : m_owned_cards) {
     score += card.value();
   }
+  if (score > 21) {
+    for (auto card : m_owned_cards) {
+      if (card.value() == 11 && score > 21) {
+        score -= 10;
+      }
+    }
+  }
   return score;
 }
 
